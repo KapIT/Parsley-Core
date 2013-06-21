@@ -1,5 +1,6 @@
 /.settings
 /bin
 /.project
-/release
-build.properties
+/.actionScriptProperties
+/.flexLibProperties
+/target

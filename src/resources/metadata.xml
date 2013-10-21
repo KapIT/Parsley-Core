@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations version="1.0">
+
+	<metadata name="DynamicObject" description="A metadata tag that can be used to specify additional configuration for dynamic 
+												object definitions in an ActionScript configuration class." >
+		<context name="variable" />
+		
+		<attribute name="id" type="String"  description="The id the object should be registered with."  />
+	</metadata>
+	
+	
+	<metadata name="Internal" description="Represents a metadata tag that marks a property for exclusion when processing an ActionScript configuration." >
+		<context name="variable" />
+	</metadata>
+	
+	
+	
+	<metadata name="ObjectDefinition" description="A metadata tag that can be used to specify additional configuration for object definitions in an ActionScript configuration class." >
+		<context name="variable" />
+		
+		<attribute name="id" type="String"  description="The id the object should be registered with."  />
+			
+		<attribute name="lazy" type="Boolean"  defaultValue="false" hint="boolean"
+			description="Indicates whether this object should be lazily initialized. If set to false the object will be instantiated upon Context initialization." />
+			
+		<attribute name="order" type="Number" 
+			description="The processing order for this object. 
+						 Only has an effect for non-lazy singletons. Those are instantiated when the
+						 Context initializes and this property allows to determine the initialization
+						 order of these singletons. Will be processed in ascending order."  />	
+	</metadata>
+	
+	
+	
+	
+	<metadata name="Publish" description="Represents a Metadata tag that can be used on properties that hold a value that should be published to matching subscribers." >
+		<context name="variable" />
+		<context name="getter" />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The scope the property value is published to."  />
+		
+		<attribute name="objectId" type="String" required="false" showHint="false"
+			description="The optional id the property value is published with."  />
+			
+		<attribute name="changeEvent" type="String" hint="events" defaultValue="change" 
+			description="The event that signals that the property value has changed. 
+						 This property does not have any effect in Flex applications
+						 where the Flex Binding mechanism is used instead." />
+			
+		<attribute name="managed" type="Boolean"  hint="boolean" defaultValue="false"
+			description="Indicates whether the value published by this property should be added to the Context (turned into a managed object) while being ublished"  />
+		
+	</metadata>
+	
+	<metadata name="PublishSubscribe" description="Represents a Metadata tag that can be used on properties that hold a value that 
+												   should be published to matching subscribers while at the same time acting as a subscriber for matching publishers." >
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The scope the property value is published to."  />
+		
+		<attribute name="objectId" type="String" required="false" showHint="false"
+			description="The optional id the property value is published with."  />
+			
+		<attribute name="changeEvent" type="String" hint="events" defaultValue="change" 
+			description="The event that signals that the property value has changed. 
+						 This property does not have any effect in Flex applications
+						 where the Flex Binding mechanism is used instead." />
+			
+		<attribute name="managed" type="Boolean"  hint="boolean" defaultValue="false"
+			description="Indicates whether the value published by this property should be added to the Context (turned into a managed object) while being ublished"  />
+			
+		<attribute name="persistent" type="Boolean"  hint="boolean" defaultValue="false"
+			description="Indicates whether the value published by this property should be persisted. 
+						 The actual persistence mechanism is pluggable, the default implementation 
+						 persists to a local SharedObject."  />
+		
+	</metadata>
+	
+	
+	<metadata name="Subscribe" description="A metadata tag that can be used on properties that should be bound to the value of a matching publisher." >
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The scope the binding listens to."  />
+		
+		<attribute name="objectId" type="String" required="false" showHint="false"
+			description="The id the source is published with."  />
+		
+	</metadata>
+	
+	
+	
+	<metadata name="CommandComplete" description="A metadata tag that can be used on methods which wish to be invoked when a matching asynchronous command execution has been completed." >
+		<context name="method" />
+		
+		<attribute name="type" type="Class" hint="classes" 
+			description="The type of the messages the receiver wants to handle"  />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The name of the scope this tag should be applied to."  />
+			
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	</metadata>
+	
+	
+	
+	<metadata name="CommandError" description="A metadata tag that can be used on methods which wish to be invoked when a matching asynchronous command execution finished with an error." >
+		<context name="method" />
+		
+		<attribute name="type" type="Class" hint="classes" 
+			description="The type of the messages the receiver wants to handle"  />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The name of the scope this tag should be applied to."  />
+			
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	</metadata>
+	
+	
+	 <metadata name="CommandResult" description="A metadata tag that can be used on methods which wish to be invoked when the result of a matching asynchronous command execution has been received." >
+		<context name="method" />
+		
+		<attribute name="type" type="Class" hint="classes"
+			description="The type of the messages the receiver wants to handle"  />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The name of the scope this tag should be applied to."  />
+			
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	 					 
+	 	<attribute name="immediate" type="Boolean"  hint="boolean" defaultValue="false"
+			description="Indicates whether the result should be processed immediately
+	 					 after the command finished executing (when set to true) or after the entire
+	 	 				 sequence or flow finished (when set to false - the default).
+	 					 Has no effect on the execution of a single command that is not part of
+	 					 a sequence or flow."  />	
+	</metadata>
+	
+	
+	<metadata name="CommandStatus" description="A metadata tag that can be used on properties that serve as a flag for indicating whether any matching asynchronous command is currently active." >
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="scope" type="String" required="false" showHint="false"
+			description="The name of the scope this tag should be applied to."  />
+			
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="type" type="Class" hint="classes" required="true"
+			description="The type of the messages the receiver wants to handle."  />	
+	 					 
+	</metadata>
+	
+	
+	
+	<metadata name="InjectConstructor" description="A metadata tag that can be used on clases for which constructor injection should be performed.  	
+													Note that since the Flash Player currently ignores metadata on constructors this tag has to be added 
+													to the class declaration." >
+		<context name="class" />
+	 					 
+	</metadata>
+	
+	
+	<metadata name="Inject" description="A metadata tag that can be used on methods/properties for which dependency injection should be performed." >
+		<context name="method" />
+		
+		<context name="variable" >
+			<attribute name="id" type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+				
+			<attribute name="required" type="Boolean" hint="boolean" defaultValue="true"
+				description="Indicates whether the dependency is required or optional."  />
+			
+			<attribute name="type" type="Class" hint="classes" 
+				description="The type to inject, only applicable for Array properties. 
+							 In this case all objects with a matching type will be included."  />
+				
+			<attribute type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+			
+		</context>
+		
+		
+		<context name="setter" >
+			<attribute name="id" type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+				
+			<attribute name="required" type="Boolean" hint="boolean" defaultValue="true"
+				description="Indicates whether the dependency is required or optional."  />
+			
+			<attribute name="type" type="Class" hint="classes" 
+				description="The type to inject, only applicable for Array properties. 
+							 In this case all objects with a matching type will be included."  />
+				
+			<attribute type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+			
+		</context>
+		
+		
+		<context name="getter" >
+			<attribute name="id" type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+				
+			<attribute name="required" type="Boolean" hint="boolean" defaultValue="true"
+				description="Indicates whether the dependency is required or optional."  />
+			
+			<attribute name="type" type="Class" hint="classes" 
+				description="The type to inject, only applicable for Array properties. 
+							 In this case all objects with a matching type will be included."  />
+				
+			<attribute type="String" required="false" showHint="false"
+				description="The id of the dependency to inject. If this property is null dependency injection by type will be performed."  />
+			
+		</context>
+	 					 
+	</metadata>
+	
+	
+	
+	<metadata name="AsyncInit" description="A metadata tag that can be used to mark an object as being asynchronously initializing." >
+		<context name="class" />
+		
+		<attribute name="completeEvent" type="String" hint="events" defaultValue="complete" 
+				description="The event type that signals that object initialization has successfully completed."  />
+				
+		<attribute name="errorEvent" type="String" hint="events" defaultValue="error" 
+				description="The event type that signals that object initialization has failed."  />
+	 					 
+	</metadata>
+	
+	
+	<metadata name="Destroy" description="A metadata tag that can be used on methods that should be invoked when the Context 
+										  that the object belongs to gets destroyed or when the object is removed from the Context." >
+		<context name="method" />
+	</metadata>
+	
+	<metadata name="Factory" description="A metadata tag that can be used to mark a method as a factory method." >
+		<context name="method" />
+	</metadata>
+	
+	<metadata name="Init" description="A metadata tag that can be used on methods that should be invoked after the object has been created and fully configured." >
+		<context name="method" />
+	</metadata>
+	
+	<metadata name="Observe" description="A metadata tag that can be used on methods that should be invoked for lifecycle events of other objects." >
+		<context name="method" />
+		
+		
+		<attribute name="scope" type="String"  
+				description="The name of the scope to observe."  />
+				
+		<attribute name="objectId" type="String"
+				description="The (optional) id of the object to observe."  />
+	</metadata>
+	
+	<metadata name="ManagedEvents" description="A metadata tag that can be used on classes that dispatch events 
+												that should be dispatched through Parsleys central message router.
+												May only be place on classes that implement IEventDispatcher. 
+												The class definition should contain additional regular 'Event' tags for all events it dispatches." >
+		<context name="class" />
+
+		
+		<attribute name="scope" type="String"  
+				description="The scope these managed events should be dispatched to.
+	 						 If this attribute is omitted the event will be dispatched through 
+	 						 all scopes of the corresponding Context."  />
+				
+		<attribute name="names" type="String"
+				description="The event names/types of all events dispatched by the annotated class that should be managed by Parsley."  />
+				
+		<attribute type="String"
+				description="The event names/types of all events dispatched by the annotated class that should be managed by Parsley."  />
+	</metadata>
+	
+	<metadata name="MessageBinding" description="A metadata tag that can be used on properties which wish to be bound to a property value
+ 												 of a particular message type dispatched through Parsleys central message router." >
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="messageProperty" type="String" required="true"
+			description="The name of the property of the message type whose value should be bound to the target property."  />
+				
+		<attribute name="type" type="Class" hint="classes" required="true"
+			description="The type of the messages the receiver wants to handle"  />
+				
+		<attribute name="scope" type="String" 
+			description="The name of the scope this tag should be applied to."  />
+				
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	</metadata>
+	
+	
+	<metadata name="MessageDispatcher" description="A metadata tag that can be used on properties where a message dispatcher function should be injected.
+													This is an alternative to declaring managed events, useful when working with message types which do not 
+													extend flash.events.Event.">
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="scope" type="String" 
+			description="The scope messages should be dispatched through.
+					     If this attribute is omitted the message will be dispatched through 
+ 						 all scopes of the corresponding Context."  />
+				
+	</metadata>
+	
+	
+	<metadata name="MessageError" description="A metadata tag that can be used on methods that should handle errors that were thrown by a regular message target." >
+		<context name="method" />
+		
+		<attribute name="errorType" type="Class" hint="classes" hintType="Error" defaultValue="Error"
+			description="The type of the error that this handler is interested in. The default is the top level Error class.."  />
+				
+		<attribute name="type" type="Class" hint="classes" 
+			description="The type of the messages the receiver wants to handle"  />
+				
+		<attribute name="scope" type="String" 
+			description="The name of the scope this tag should be applied to."  />
+				
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	</metadata>
+	
+	
+	<metadata name="MessageHandler" description="A metadata tag that can be used on methods which wish to handle messages dispatched through Parsleys central message router." >
+		<context name="method" />
+		
+		<attribute name="messageProperties" type="String"  
+			description="Optional list of names of properties of the message that should be used as method parameters 
+						 instead passing the message itself as a parameter."  />
+				
+		<attribute name="type" type="Class" hint="classes" 
+			description="The type of the messages the receiver wants to handle"  />
+				
+		<attribute name="scope" type="String" 
+			description="The name of the scope this tag should be applied to."  />
+				
+		<attribute name="selector" type="String" required="false" showHint="false" 
+			description="An optional selector value to be used in addition to selecting messages by type.
+						 Will be checked against the value of the property in the message marked with 'Selector' tag
+						 or against the event type if the message is an event and does not have a selector property specified explicitly."/>
+						 
+		<attribute name="order" type="Number" required="false" showHint="false"
+			description="The execution order for this receiver. Will be processed in ascending order. 
+	 					 The default is int.MAX_VALUE"  />	
+	</metadata>
+	
+	
+	
+	<metadata name="ResourceBinding" description="A metadata tag that can be used to bind a property value to a resource, updating
+ 												  automatically when the ResourceManager updates." >
+		<context name="variable" />
+		<context name="getter" />
+		<context name="setter" />
+		
+		<attribute name="bundle" type="String"  
+			description="The resource key."  />
+				
+		<attribute name="key" type="String"  
+			description="The bundle name"  />
+	</metadata> 
+	
+</annotations>

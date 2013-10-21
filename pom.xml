@@ -18,6 +18,11 @@
 
     <build>
         <sourceDirectory>src/core/kernel-api</sourceDirectory>
+        <resources>
+        	<resource>
+        		<directory>src/resources</directory>
+        	</resource>
+        </resources>
         <plugins>
         	<plugin>
         		<groupId>org.codehaus.mojo</groupId>
@@ -78,6 +83,10 @@
                         <param>${basedir}/src/core/kernel-api</param>
                         <param>${basedir}/src/core/toolbox</param>
                     </includeSources>
+                    
+                 	<includeFiles>
+            		 	<include>metadata.xml</include>
+            		</includeFiles>
                     
                     <keepAs3Metadatas>
                     	<keepAs3Metadata>Inject</keepAs3Metadata>

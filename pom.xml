@@ -13,15 +13,11 @@
     <name>${project.groupId} ${project.artifactId} ${project.version}</name>
     <description>${project.groupId} ${project.artifactId} ${project.version}</description>
 
-    <properties>
-    	<!--  test in parsley are made on 3 artifact parsley-core parsley-flex parsley-xml grouped, need to find a way to separate this -->
-        <maven.test.skip>true</maven.test.skip>
-    </properties>
+   
 
 
     <build>
         <sourceDirectory>src/core/kernel-api</sourceDirectory>
-        <testSourceDirectory>src/test</testSourceDirectory>
         <plugins>
         	<plugin>
         		<groupId>org.codehaus.mojo</groupId>
@@ -80,6 +76,7 @@
                     
                     <includeSources>
                         <param>${basedir}/src/core/kernel-api</param>
+                        <param>${basedir}/src/core/toolbox</param>
                     </includeSources>
                     
                     <keepAs3Metadatas>
@@ -129,19 +126,19 @@
     	<dependency>
             <groupId>org.spicefactory.lib</groupId>
 		    <artifactId>spicelib-reflect</artifactId>
-		    <version>3.1.1-SNAPSHOT</version>
+		    <version>${spicelib.version}</version>
             <type>swc</type>
         </dependency>
         <dependency>
             <groupId>org.spicefactory.lib</groupId>
 		    <artifactId>spicelib-util</artifactId>
-		    <version>3.1.1-SNAPSHOT</version>
+		    <version>${spicelib.version}</version>
             <type>swc</type>
         </dependency>
         <dependency>
             <groupId>org.spicefactory.lib</groupId>
 		    <artifactId>spicelib-commands</artifactId>
-		    <version>3.1.1-SNAPSHOT</version>
+		    <version>${spicelib.version}</version>
             <type>swc</type>
         </dependency>
     </dependencies>
